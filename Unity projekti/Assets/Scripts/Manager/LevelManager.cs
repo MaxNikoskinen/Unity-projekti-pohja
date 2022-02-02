@@ -79,11 +79,11 @@ public class LevelManager : Singleton<LevelManager>
         //Tee jos skene on päävalikko
         if (scene.path == MainMenu.Scene.ScenePath)
         {
-            
+            GameManager.Instance.ToggleCanPause(false);
         }
         else //Tee jos skene ei ole päävalikko
         {
-            
+            GameManager.Instance.ToggleCanPause(true);
         }
     }
 }

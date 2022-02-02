@@ -18,4 +18,45 @@ public class GameManager : Singleton<GameManager>
 
         #endif
     }
+
+    private bool isPaused;
+    private bool canPause;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && canPause)
+        {
+            //Jos peli on pysäytetty
+            if (isPaused)
+            {
+                ResumeGame();
+            }
+
+            //Jos peliä ei ole pysäytetty
+            if (!isPaused)
+            {
+                PauseTheGame();
+            }
+        }
+    }
+
+    //Pysäytä peli
+    public void PauseTheGame()
+    {
+        isPaused = true;
+
+    }
+
+    //Jatka peliä
+    public void ResumeGame()
+    {
+        isPaused = false;
+
+    }
+
+    //Onko pelaaja päävalikossa vai ei
+    public void ToggleCanPause(bool value)
+    {
+        canPause = value;
+    }
 }
