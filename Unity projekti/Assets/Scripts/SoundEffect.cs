@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
 
+//Ääniefekti skripti audiomanageriin
+
 [System.Serializable]
 public class SoundEffect
 {

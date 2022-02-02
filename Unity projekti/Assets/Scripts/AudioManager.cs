@@ -3,57 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-/// <summary>
-/// Manager that handles all audio output logically
-/// </summary>
+//Luokka äänentoistoon
+
 public class AudioManager : Singleton<AudioManager>
 {
     [Header("Mixer")]
-    [SerializeField] private AudioMixer Mixer;  // Audio Mixer that is in use
+    [SerializeField] private AudioMixer Mixer;
 
-    // Music system should be reworked a bit.
-    // For example, creating a "MusicEffect" class. Currently uses the SoundEffect class
     [Header("Music")]
-    [SerializeField] private SoundEffect StartingMusic;     // Music sound effect
-    [SerializeField] private AudioSource MusicAS;   // Music AudioSource reference
+    [SerializeField] private SoundEffect StartingMusic;
+    [SerializeField] private AudioSource MusicAS;
 
-    private AudioSource AS;                        // AudioManager Audiosource that is used to play SoundEffects
+    private AudioSource AS;
 
     private void Awake()
     {
         AS = GetComponent<AudioSource>();
     }
 
+    //Soita aloitus musiikki kun peli käynnistyy
     private void Start()
     {
-        PlayMusicTrack(StartingMusic); // at start play the Starting Music
+        PlayMusicTrack(StartingMusic);
     }
 
-    /// <summary>
-    /// Change an Audio Mixers group volume. Groups: Master, SoundEffect and Music 
-    /// </summary>
-    /// <param name="group"></param>
-    /// <param name="volume"></param>
+    //Vaihda audiomikserin äänenvoimakkuutta
     public void ChangeMixerGroupVolume(string group, float volume)
     {
         Mixer.SetFloat(group, volume);
     }
 
-    /// <summary>
-    /// Toistaa jonkin ääni effektin vain kerran annetulla SoundEffect datalla, ja datan äänenvoimakkuus lisätään audiosourceen
-    /// </summary>
-    /// <param name="effect"></param>
+    // Toistaa jonkin ääni effektin vain kerran annetulla SoundEffect datalla, ja datan äänenvoimakkuus lisätään audiosourceen
     public void PlayClipOnce(SoundEffect effect)
     {
         AS.outputAudioMixerGroup = effect.Mixer;
         AS.PlayOneShot(effect.GetClip(), effect.volume);
     }
 
-    /// <summary>
-    /// Toistaa jonkin ääni effektin vain kerran annetulla SoundEffect datalla, annetun GameObjektin AudioSourcesta
-    /// </summary>
-    /// <param name="effect"></param>
-    /// <param name="source"></param>
+    // Toistaa jonkin ääni effektin vain kerran annetulla SoundEffect datalla, annetun GameObjektin AudioSourcesta
     public void PlayClipOnce(SoundEffect effect, GameObject source)
     {
         // Hae source -GameObjectista "AudioSource"
@@ -72,10 +59,7 @@ public class AudioManager : Singleton<AudioManager>
         SourceAS.PlayOneShot(effect.GetClip(), effect.volume);
     }
 
-    /// <summary>
-    /// Plays the given music track 
-    /// </summary>
-    /// <param name="track"></param>
+    //Metodi joka soittaa musiikkia
     public void PlayMusicTrack(SoundEffect track)
     {
         MusicAS.outputAudioMixerGroup = track.Mixer;

@@ -6,10 +6,10 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 //Sallii vaihtamisen skenejen välillä helposti
+
 [RequireComponent(typeof(DontDestroyOnLoad))]
 public class LevelManager : Singleton<LevelManager>
 {
-    // Serialzied class that allows you to create a specific level data
     [System.Serializable]
     public class LevelData
     {
@@ -18,14 +18,14 @@ public class LevelManager : Singleton<LevelManager>
     }
 
     private string sceneList;
-    [SerializeField] private LevelData MainMenu;                                    // LevelData for the Main Menu
-    [SerializeField] private List<LevelData> Levels = new List<LevelData>();        // LevelData list for all the levels in the game
+    [SerializeField] private LevelData MainMenu;
+    [SerializeField] private List<LevelData> Levels = new List<LevelData>();
 
     void Start()
     {
-        SceneManager.sceneLoaded += OnLevelLoaded; // When ever a new scene file is loaded, the OnLevelLoaded event is called
+        SceneManager.sceneLoaded += OnLevelLoaded;
 
-        // If the Main Menu Scene is not assigned, add a warning message to the console
+        //Jos päävalikkoaskeneä ei ole asetettu, laita ilmoitus konsoliin
         if (MainMenu.Scene == null) 
         {
             Debug.LogWarning("No main menu detected");
@@ -43,11 +43,8 @@ public class LevelManager : Singleton<LevelManager>
         }
         UIManager.Instance.UpdateSceneList("Main Menu" + sceneList);
     }
-
-    /// <summary>
-    /// Load Level usign the name set in the LevelData class.
-    /// </summary>
-    /// <param name="name">Nimi on tämä</param>
+    
+    //Lataa skene kirjoittamalla sille levelmanageriin asetettu nimi
     public void LoadLevel(string name)
     {
         foreach (LevelData data in Levels)
@@ -64,42 +61,29 @@ public class LevelManager : Singleton<LevelManager>
         }
     }
 
-    /// <summary>
-    /// Loads the Main Menu scene
-    /// </summary>
+    //Metodi jolla ladataan päävalikko
     public void LoadMainMenu()
     {
         SceneManager.LoadScene(MainMenu.Scene);
     }
 
-    /// <summary>
-    /// Load Level usign a SceneReference asset
-    /// </summary>
-    /// <param name="scene"></param>
+    //Lataa taso käyttäen skenereferenseä
     public void LoadLevel(SceneReference scene)
     {
-        Debug.Log("ASD");
         SceneManager.LoadScene(scene);
     }
 
-    /// <summary>
-    /// OnLevelLoaded is called when ever a new scene is loaded
-    /// </summary>
-    /// <param name="scene"></param>
-    /// <param name="mode"></param>
+    //Eventti jolla voi tietää kun skene ladataan
     void OnLevelLoaded(Scene scene, LoadSceneMode mode)
     {
-        // If the Main Menu is loaded, hide the in game HUD and show the Options UI
-        // else, hide Options UI and show the HUD
+        //Tee jos skene on päävalikko
         if (scene.path == MainMenu.Scene.ScenePath)
-        {/*
-            UIManager.Instance.ToggleHUD(false);
-            UIManager.Instance.ToggleOptionsUI(true);
-        }
-        else
         {
-            UIManager.Instance.ToggleHUD(true);
-            UIManager.Instance.ToggleOptionsUI(false);*/
+            
+        }
+        else //Tee jos skene ei ole päävalikko
+        {
+            
         }
     }
 }

@@ -4,8 +4,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
 
-
-/// Hallitsee käyttöliittymään liittyviä asioita, asetukset ja muut
+// Hallitsee käyttöliittymään liittyviä asioita, asetukset ja muut
 
 [RequireComponent(typeof(DontDestroyOnLoad))]
 public class UIManager : Singleton<UIManager>
