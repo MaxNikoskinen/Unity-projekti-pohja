@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5790814146072462443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5790814146072462440}
+  - component: {fileID: 1346200931789781722}
+  - component: {fileID: 4218548638774332212}
+  m_Layer: 0
+  m_Name: Level Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5790814146072462440
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5790814146072462443}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1346200931789781722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5790814146072462443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 071393751c0282547841208cfea850ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4218548638774332212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5790814146072462443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008749045619551489746801d3ac5d04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainMenu:
+    LevelName: Main Menu
+    Scene:
+      sceneAsset: {fileID: 102900000, guid: 120d6bc9801ca69448c053bd6a5834df, type: 3}
+      scenePath: Assets/Scenes/Menu.unity
+  Levels:
+  - LevelName: Test Level
+    Scene:
+      sceneAsset: {fileID: 102900000, guid: 914d114c92793f242ad2297c14e83104, type: 3}
+      scenePath: Assets/Scenes/TestLevel.unity
+  - LevelName: Test Level 2
+    Scene:
+      sceneAsset: {fileID: 102900000, guid: bdf7ab4e466c6384ebf1e40750e7b759, type: 3}
+      scenePath: Assets/Scenes/Test Level 2.unity
