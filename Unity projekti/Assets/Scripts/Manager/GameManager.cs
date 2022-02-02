@@ -31,9 +31,8 @@ public class GameManager : Singleton<GameManager>
             {
                 ResumeGame();
             }
-
             //Jos peliä ei ole pysäytetty
-            if (!isPaused)
+            else
             {
                 PauseTheGame();
             }
@@ -44,14 +43,14 @@ public class GameManager : Singleton<GameManager>
     public void PauseTheGame()
     {
         isPaused = true;
-
+        UIManager.Instance.TogglePauseScreen(true);
     }
 
     //Jatka peliä
     public void ResumeGame()
     {
         isPaused = false;
-
+        UIManager.Instance.TogglePauseScreen(false);
     }
 
     //Onko pelaaja päävalikossa vai ei

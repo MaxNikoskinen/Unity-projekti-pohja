@@ -6464,6 +6464,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneList: {fileID: 1828049407}
   SceneInputField: {fileID: 815283913769498121}
+  pauseScreen: {fileID: 1891828595}
+  mainMenuScreen: {fileID: 815283912862558692}
 --- !u!222 &815283912040321962
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -80,10 +80,12 @@ public class LevelManager : Singleton<LevelManager>
         if (scene.path == MainMenu.Scene.ScenePath)
         {
             GameManager.Instance.ToggleCanPause(false);
+            UIManager.Instance.ToggleMainMenuScreen(true);
         }
         else //Tee jos skene ei ole päävalikko
         {
             GameManager.Instance.ToggleCanPause(true);
+            UIManager.Instance.ToggleMainMenuScreen(false);
         }
     }
 }

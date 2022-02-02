@@ -12,6 +12,8 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TMP_Text sceneList;
     private bool canLoad;
     [SerializeField] private TMP_InputField SceneInputField;
+    [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private GameObject mainMenuScreen;
 
     private void Update()
     {
@@ -35,6 +37,18 @@ public class UIManager : Singleton<UIManager>
     public void UpdateSceneList(string list)
     {
         sceneList.text = list;
+    }
+
+    //Ota pelin pysäytysruutu käyttöön / pois
+    public void TogglePauseScreen(bool value)
+    {
+        pauseScreen.SetActive(value);
+    }
+
+    //Ota päävalikko käyttöön / pois
+    public void ToggleMainMenuScreen(bool value)
+    {
+        mainMenuScreen.SetActive(value);
     }
 }
 
