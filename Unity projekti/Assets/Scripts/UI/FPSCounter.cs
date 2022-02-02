@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using System;
 using TMPro;
 
+//FPS-mittari jonka voi ottaa käyttöön asetuksista
+
 public class FPSCounter : MonoBehaviour 
 {	
     public TMP_Text fpsCounterText;
@@ -16,6 +18,7 @@ public class FPSCounter : MonoBehaviour
 	private double fps;
 	private float updateRate = 2.0f;
 
+    //Asettaa asetukset arvoksi sen mikä on tallennettu
     private void Start()
     {
         fpsCounterDropdown.value = PlayerPrefs.GetInt("FPSCounterStage", 0);
@@ -23,6 +26,7 @@ public class FPSCounter : MonoBehaviour
 
     private void Update() 
 	{
+        //Laskee fps:sän ja näyttää sen tekstissä
 		frameCount++;
 		deltaTime += Time.unscaledDeltaTime;
 
@@ -35,6 +39,7 @@ public class FPSCounter : MonoBehaviour
 		}
 	}
 
+    //Ottaa fps-mittarin käyttöön / pois asetuksella
     public void FPSCounterActive(int counterActive)
     {
         if (counterActive == 0)

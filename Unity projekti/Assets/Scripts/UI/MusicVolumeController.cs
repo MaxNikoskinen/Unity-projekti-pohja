@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 using TMPro;
 using System;
 
+//Luokka jolla musiikin äänenvoimakkuuden vaihtaminen asetuksista on mahdollista
 public class MusicVolumeController : MonoBehaviour 
 {
     public AudioMixer mixer;
@@ -13,6 +14,7 @@ public class MusicVolumeController : MonoBehaviour
     public TMP_Text sliderValueText;
     private double convertedNumber;
 
+    //Asettaa asetuksen arvoksi sen, mikä on muistissa ja näyttää äänenvoimakkuuden prosentteina asetuksissa
     private void Start()
     {
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1.00f);
@@ -20,6 +22,7 @@ public class MusicVolumeController : MonoBehaviour
         sliderValueText.text = convertedNumber.ToString() + " %";
     }
 
+    //Metodi jolla äänenvoimakkuuden voi asettaa pelin asetuksista
     public void SetMusicVolume (float musicVolume)
 	{
 		mixer.SetFloat ("volumeMusic", Mathf.Log10(musicVolume) * 20);

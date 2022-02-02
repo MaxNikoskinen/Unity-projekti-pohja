@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+//FPS-rajoitin jonka voi ottaa käyttöön asetuksista
+
 public class FPSLimiterSetting : MonoBehaviour
 {
     public TMP_Dropdown fpsLimiterDropdown;
     private int numberFromPlayerPrefs;
 
+    //Asettaa asetuksen arvoksi sen mikä on tallenettu
     private void Start()
     {
         fpsLimiterDropdown.value = PlayerPrefs.GetInt("FPSLimit", 4);
@@ -15,11 +18,13 @@ public class FPSLimiterSetting : MonoBehaviour
         SetFPSLimit(numberFromPlayerPrefs);
     }
 
+    //Hakee asetuksen arvon muistista
     private void GetNumber()
     {
         numberFromPlayerPrefs = PlayerPrefs.GetInt("FPSLimit", 4);
     }
     
+    //Metodi jolla fps-rajoitinta voi muuttaa pelin asetuksista
     public void SetFPSLimit(int fpsLimit)
     {
         if(fpsLimit == 0)
