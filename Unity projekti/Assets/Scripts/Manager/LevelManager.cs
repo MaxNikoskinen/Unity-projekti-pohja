@@ -21,6 +21,8 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField] private LevelData MainMenu;
     [SerializeField] private List<LevelData> Levels = new List<LevelData>();
 
+    private bool isInMenu;
+
     void Start()
     {
         SceneManager.sceneLoaded += OnLevelLoaded;
@@ -81,11 +83,19 @@ public class LevelManager : Singleton<LevelManager>
         {
             GameManager.Instance.ToggleCanPause(false);
             UIManager.Instance.ToggleMainMenuScreen(true);
+            isInMenu = true;
         }
         else //Tee jos skene ei ole päävalikko
         {
             GameManager.Instance.ToggleCanPause(true);
             UIManager.Instance.ToggleMainMenuScreen(false);
+            isInMenu = false;
         }
+    }
+
+    //
+    public bool MenuDetect()
+    {
+        return isInMenu;
     }
 }

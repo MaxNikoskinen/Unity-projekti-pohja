@@ -14,6 +14,9 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TMP_InputField SceneInputField;
     [SerializeField] private GameObject pauseScreen;
     [SerializeField] private GameObject mainMenuScreen;
+    [SerializeField] private GameObject settingsScreen;
+    [SerializeField] private GameObject backToMenuScreen;
+    [SerializeField] private GameObject guideScreen;
 
     private void Update()
     {
@@ -49,6 +52,38 @@ public class UIManager : Singleton<UIManager>
     public void ToggleMainMenuScreen(bool value)
     {
         mainMenuScreen.SetActive(value);
+    }
+
+    //
+    public void ToggleSettingsScreen(bool value)
+    {
+        settingsScreen.SetActive(value);
+    }
+
+    //
+    public void ToggleBackToMenuScreen(bool value)
+    {
+        backToMenuScreen.SetActive(value);
+    }
+
+    //
+    public void ToggleGuideScreen(bool value)
+    {
+        guideScreen.SetActive(value);
+    }
+
+    //
+    public void BackToMenu()
+    {
+        bool isInMenu = LevelManager.Instance.MenuDetect();
+        if(isInMenu)
+        {
+            mainMenuScreen.SetActive(true);
+        }
+        else
+        {
+            pauseScreen.SetActive(true);
+        }
     }
 }
 
