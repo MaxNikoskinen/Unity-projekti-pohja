@@ -17,6 +17,8 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject settingsScreen;
     [SerializeField] private GameObject backToMenuScreen;
     [SerializeField] private GameObject guideScreen;
+    [SerializeField] private GameObject quitGameScreen;
+    [SerializeField] private GameObject sceneLoadingScreen;
 
     private void Update()
     {
@@ -27,6 +29,20 @@ public class UIManager : Singleton<UIManager>
             SceneInputField.text = "";
             SceneInputField.Select();
             SceneInputField.ActivateInputField();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            bool isInMenu = LevelManager.Instance.MenuDetect();
+            if (isInMenu)
+            {
+                mainMenuScreen.SetActive(true);
+                settingsScreen.SetActive(false);
+                guideScreen.SetActive(false);
+                quitGameScreen.SetActive(false);
+            }
+            sceneLoadingScreen.SetActive(false);
+            ToggleCanLoad(false);
         }
     }
 

@@ -25,6 +25,12 @@ public class GameManager : Singleton<GameManager>
 
     private bool isPaused;
     private bool canPause;
+    private int randomValue;
+
+    private void Start()
+    {
+        randomValue = Random.Range(0, 10000);
+    }
 
     private void Update()
     {
