@@ -81,6 +81,7 @@ public class LevelManager : Singleton<LevelManager>
         {
             GameManager.Instance.ToggleCanPause(false);
             UIManager.Instance.ToggleMainMenuScreen(true);
+            GameManager.Instance.ResumeGame();
             isInMenu = true;
         }
         else //Tee jos skene ei ole päävalikko

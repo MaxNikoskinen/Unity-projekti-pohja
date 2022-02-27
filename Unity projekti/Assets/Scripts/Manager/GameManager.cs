@@ -9,6 +9,8 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private bool is3d;
 
+    private GameObject playerReference;
+
     //Poistu pelistä metodi, sulkee pelin
     public void ExitGame()
     {
@@ -90,5 +92,23 @@ public class GameManager : Singleton<GameManager>
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    public int GetRandomValue()
+    {
+        return randomValue;
+    }
+
+    public GameObject player
+    {
+        get
+        {
+            return playerReference;
+        }
+        set
+        {
+            playerReference = value;
+            Debug.Log("Player added to gamemanager", value);
+        }
     }
 }
