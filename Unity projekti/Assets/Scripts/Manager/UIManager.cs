@@ -19,6 +19,8 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject guideScreen;
     [SerializeField] private GameObject quitGameScreen;
     [SerializeField] private GameObject sceneLoadingScreen;
+    [SerializeField] private TMP_Text noSceneWarningText;
+    [SerializeField] private GameObject noSceneWarning;
 
     private void Update()
     {
@@ -100,6 +102,13 @@ public class UIManager : Singleton<UIManager>
         {
             pauseScreen.SetActive(true);
         }
+    }
+
+    //
+    public void WarnIfNoScene(string name)
+    {
+        noSceneWarning.SetActive(true);
+        noSceneWarningText.text = "Skeneä \"" + name + "\" ei ole olemassa";
     }
 }
 

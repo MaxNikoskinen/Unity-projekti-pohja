@@ -60,6 +60,7 @@ public class GameManager : Singleton<GameManager>
         {
             ShowCursor();
         }
+        Time.timeScale = 1;
     }
 
     //Jatka peliä
@@ -74,6 +75,7 @@ public class GameManager : Singleton<GameManager>
         {
             HideCursor();
         }
+        Time.timeScale = 0;
     }
 
     //Onko pelaaja päävalikossa vai ei
@@ -110,5 +112,15 @@ public class GameManager : Singleton<GameManager>
             playerReference = value;
             Debug.Log("Player added to gamemanager", value);
         }
+    }
+
+    public bool GetIsPaused()
+    {
+        return isPaused;
+    }
+
+    public bool GetIs3d()
+    {
+        return is3d;
     }
 }

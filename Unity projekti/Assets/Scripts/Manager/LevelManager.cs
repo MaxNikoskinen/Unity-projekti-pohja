@@ -39,9 +39,9 @@ public class LevelManager : Singleton<LevelManager>
         UIManager.Instance.UpdateSceneList("");
         foreach (LevelData data in Levels)
         {
-            sceneList += ", " + data.LevelName.ToString();
+            sceneList += ", " + data.LevelName;
         }
-        UIManager.Instance.UpdateSceneList("Main Menu" + sceneList);
+        UIManager.Instance.UpdateSceneList(MainMenu.LevelName + sceneList);
     }
     
     //Lataa skene kirjoittamalla sille levelmanageriin asetettu nimi
@@ -49,15 +49,25 @@ public class LevelManager : Singleton<LevelManager>
     {
         foreach (LevelData data in Levels)
         {
-            if(data.LevelName.Equals(name))
+            if (data.LevelName.Equals(name))
             {
                 SceneManager.LoadScene(data.Scene);
                 return;
             }
-            if(name == "Main Menu")
-            {
-                LoadMainMenu();
-            }
+        }
+
+        if (name.Equals(MainMenu.LevelName))
+        {
+            LoadMainMenu();
+        }
+        else if (name == "")
+        {
+            return;
+        }
+        else
+        {
+            Debug.Log("Scene \"" + name + "\" doesn't exist in the level manager");
+            UIManager.Instance.WarnIfNoScene(name);
         }
     }
 
@@ -80,15 +90,35 @@ public class LevelManager : Singleton<LevelManager>
         if (scene.path == MainMenu.Scene.ScenePath)
         {
             GameManager.Instance.ToggleCanPause(false);
+
             UIManager.Instance.ToggleMainMenuScreen(true);
-            GameManager.Instance.ResumeGame();
+
+            bool isPaused = GameManager.Instance.GetIsPaused();
+            if(isPaused)
+            {
+                GameManager.Instance.ResumeGame();
+            }
             isInMenu = true;
+
+            bool is3d = GameManager.Instance.GetIs3d();
+            if (is3d)
+            {
+                GameManager.Instance.ShowCursor();
+            }
         }
         else //Tee jos skene ei ole päävalikko
         {
             GameManager.Instance.ToggleCanPause(true);
+
             UIManager.Instance.ToggleMainMenuScreen(false);
+
             isInMenu = false;
+
+            bool is3d = GameManager.Instance.GetIs3d();
+            if(is3d)
+            {
+                GameManager.Instance.HideCursor();
+            }
         }
     }
 
