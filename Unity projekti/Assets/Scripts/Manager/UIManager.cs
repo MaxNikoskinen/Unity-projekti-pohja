@@ -21,6 +21,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject sceneLoadingScreen;
     [SerializeField] private TMP_Text noSceneWarningText;
     [SerializeField] private GameObject noSceneWarning;
+    [SerializeField] private TMP_Text loadedSceneText;
 
     private void Update()
     {
@@ -109,6 +110,12 @@ public class UIManager : Singleton<UIManager>
     {
         noSceneWarning.SetActive(true);
         noSceneWarningText.text = "Skeneä \"" + name + "\" ei ole olemassa";
+    }
+
+    //
+    public void UpdateLoadedSceneText(string name)
+    {
+        loadedSceneText.text = "Ladattu skene: " + name;
     }
 }
 

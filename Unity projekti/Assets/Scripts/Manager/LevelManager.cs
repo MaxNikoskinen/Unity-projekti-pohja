@@ -52,6 +52,7 @@ public class LevelManager : Singleton<LevelManager>
             if (data.LevelName.Equals(name))
             {
                 SceneManager.LoadScene(data.Scene);
+                UIManager.Instance.UpdateLoadedSceneText(name);
                 return;
             }
         }
@@ -75,12 +76,7 @@ public class LevelManager : Singleton<LevelManager>
     public void LoadMainMenu()
     {
         SceneManager.LoadScene(MainMenu.Scene);
-    }
-
-    //Lataa taso käyttäen skenereferenseä
-    public void LoadLevel(SceneReference scene)
-    {
-        SceneManager.LoadScene(scene);
+        UIManager.Instance.UpdateLoadedSceneText(MainMenu.LevelName);
     }
 
     //Eventti jolla voi tietää kun skene ladataan
