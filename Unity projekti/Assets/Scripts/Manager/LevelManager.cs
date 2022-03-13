@@ -89,15 +89,13 @@ public class LevelManager : Singleton<LevelManager>
 
             UIManager.Instance.ToggleMainMenuScreen(true);
 
-            bool isPaused = GameManager.Instance.GetIsPaused();
-            if(isPaused)
+            if(GameManager.Instance.GetIsPaused())
             {
                 GameManager.Instance.ResumeGame();
             }
             isInMenu = true;
 
-            bool is3d = GameManager.Instance.GetIs3d();
-            if (is3d)
+            if (GameManager.Instance.GetIs3d())
             {
                 GameManager.Instance.ShowCursor();
             }
@@ -110,8 +108,7 @@ public class LevelManager : Singleton<LevelManager>
 
             isInMenu = false;
 
-            bool is3d = GameManager.Instance.GetIs3d();
-            if(is3d)
+            if(GameManager.Instance.GetIs3d())
             {
                 GameManager.Instance.HideCursor();
             }

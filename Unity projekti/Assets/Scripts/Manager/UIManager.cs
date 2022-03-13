@@ -36,8 +36,7 @@ public class UIManager : Singleton<UIManager>
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            bool isInMenu = LevelManager.Instance.MenuDetect();
-            if (isInMenu)
+            if (LevelManager.Instance.MenuDetect())
             {
                 mainMenuScreen.SetActive(true);
                 settingsScreen.SetActive(false);
@@ -94,8 +93,7 @@ public class UIManager : Singleton<UIManager>
     //
     public void BackToMenu()
     {
-        bool isInMenu = LevelManager.Instance.MenuDetect();
-        if(isInMenu)
+        if(LevelManager.Instance.MenuDetect())
         {
             mainMenuScreen.SetActive(true);
         }
